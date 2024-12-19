@@ -20,3 +20,15 @@ npm run compile
 npm run node
 npm run deploy:local
 ```
+
+## Deployments
+
+### Base Sepolia Testnet
+
+- **Contract**: DegenLockToken
+- **Address**: `0x87b9beb8b62748785dc2352e622d8ed67d37be7d`
+- **Transaction**: `0x89ec46639b38233ba1008cfaa1fc992ce0d659a7a3c0c6496d138060336102ec`
+- **Block**: 19405164
+- **Deployer**: `0x35ce1fb8caa3758190ac65edbcbc9647b8800e8f`
+- **Network**: Base Sepolia (Chain ID: 84532)
+- **Explorer**: [View on BaseScan](https://sepolia.basescan.org/address/0x87b9beb8b62748785dc2352e622d8ed67d37be7d)
