@@ -10,7 +10,8 @@ contract DeployDegenLock is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        DegenLockToken degenLock = new DegenLockToken();
+        address defaultToken = 0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
+        DegenLockToken degenLock = new DegenLockToken(defaultToken);
 
         vm.stopBroadcast();
 
