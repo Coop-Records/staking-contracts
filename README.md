@@ -1,13 +1,25 @@
-## Foundry
+# $DEGEN Smart Contracts
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This repository holds the code for $DEGEN smart contracts, including the token and Airdrop 1 contracts.
 
-Foundry consists of:
+## Test
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+```shell
+npm run test
+npm run test:report-gas
+```
+
+Running tests in VS Code: https://hardhat.org/hardhat-runner/docs/advanced/vscode-tests
+
+## Deploy
+
+Deploy to a local Hardhat node.
+
+```shell
+npm run compile
+npm run node
+npm run deploy:local
+```
 
 ## Deployments
 
@@ -20,59 +32,3 @@ Foundry consists of:
 - **Deployer**: `0x35ce1fb8caa3758190ac65edbcbc9647b8800e8f`
 - **Network**: Base Sepolia (Chain ID: 84532)
 - **Explorer**: [View on BaseScan](https://sepolia.basescan.org/address/0x87b9beb8b62748785dc2352e622d8ed67d37be7d)
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
-```
-
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
