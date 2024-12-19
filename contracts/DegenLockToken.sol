@@ -26,12 +26,6 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     string public constant TOKEN_SYMBOL = "LDEGEN";
 
     /**
-     * @dev Default token address for the ERC20 token to be locked
-     */
-    address public constant DEFAULT_TOKEN =
-        0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
-
-    /**
      * @dev The ERC20 token to be locked
      */
     IERC20 public immutable TOKEN;
@@ -67,6 +61,10 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     error ZeroAmount();
 
     /**
+     * @dev Token address cannot be zero
+     */
+    error InvalidTokenAddress();
+
     /**
      * @dev Minimum deposit not met
      */
@@ -102,12 +100,13 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
 
     /**
      * @dev Construct a new Degen token
-     * @param token_ The ERC20 token to be locked. If address(0), uses DEFAULT_TOKEN
+     * @param token_ The ERC20 token to be locked
      */
     constructor(
         address token_
     ) ERC20(TOKEN_NAME, TOKEN_SYMBOL) Ownable(msg.sender) {
-        TOKEN = IERC20(token_ == address(0) ? DEFAULT_TOKEN : token_);
+        if (token_ == address(0)) revert InvalidTokenAddress();
+        TOKEN = IERC20(token_);
     }
 
     /**
