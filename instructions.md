@@ -1,9 +1,9 @@
 # instructions
 
-## goal: write a script to deploy the DegenLockToken contract
+## goal: token being locked is configured in the constructor.
 
 ## steps:
 
-1. create a new file in the `scripts` directory
-2. write the script to deploy the DegenLockToken contract
-3. run the script
+1. updaate unit test to test the constructor properly configured the token being locked
+2. use a default value for the locked token from the existing calue in DegenLockToken.sol
+3. update the script to deploy the contract with the default value
