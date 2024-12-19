@@ -7,8 +7,7 @@ import "../contracts/DegenLockToken.sol";
 contract DegenLockTokenTest is Test {
     DegenLockToken public lockToken;
     address public user = address(0x1);
-    address public constant DEGEN_TOKEN =
-        0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
+    address public constant DEGEN_TOKEN = 0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
     address public constant TEST_TOKEN = address(0x2);
 
     function setUp() public {
