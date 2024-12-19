@@ -13,6 +13,25 @@ Running tests in VS Code: https://hardhat.org/hardhat-runner/docs/advanced/vscod
 
 ## Deploy
 
+### Using Foundry
+
+Deploy the contract:
+
+```shell
+# Deploy to Base Sepolia
+forge script script/DeployDegenLock.s.sol --rpc-url https://sepolia.base.org --broadcast --verify -vvvv
+
+# Deploy to Base Mainnet (replace with your RPC URL)
+forge script script/DeployDegenLock.s.sol --rpc-url $RPC_URL --broadcast --verify -vvvv
+```
+
+Required environment variables:
+
+- `PRIVATE_KEY`: Your deployer wallet's private key
+- `ETHERSCAN_API_KEY`: Your Etherscan API key for contract verification
+
+### Using Hardhat
+
 Deploy to a local Hardhat node.
 
 ```shell
