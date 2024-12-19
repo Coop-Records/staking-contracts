@@ -1,22 +1,66 @@
-# $DEGEN Smart Contracts
+## Foundry
 
-This repository holds the code for $DEGEN smart contracts, including the token and Airdrop 1 contracts.
+**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
 
-## Test
+Foundry consists of:
+
+-   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
+-   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
+-   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
+-   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+
+## Documentation
+
+https://book.getfoundry.sh/
+
+## Usage
+
+### Build
 
 ```shell
-npm run test
-npm run test:report-gas
+$ forge build
 ```
 
-Running tests in VS Code: https://hardhat.org/hardhat-runner/docs/advanced/vscode-tests
-
-## Deploy
-
-Deploy to a local Hardhat node.
+### Test
 
 ```shell
-npm run compile
-npm run node
-npm run deploy:local
+$ forge test
+```
+
+### Format
+
+```shell
+$ forge fmt
+```
+
+### Gas Snapshots
+
+```shell
+$ forge snapshot
+```
+
+### Anvil
+
+```shell
+$ anvil
+```
+
+### Deploy
+
+```shell
+$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+```
+
+### Cast
+
+```shell
+$ cast <subcommand>
+```
+
+### Help
+
+```shell
+$ forge --help
+$ anvil --help
+$ cast --help
 ```
