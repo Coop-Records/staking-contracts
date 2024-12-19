@@ -28,8 +28,7 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     /**
      * @dev The ERC20 token to be locked
      */
-    IERC20 public constant TOKEN =
-        IERC20(0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed);
+    IERC20 public immutable TOKEN;
 
     /**
      * @dev Lock duration in seconds, period starts after the deposit timestamp
@@ -62,6 +61,10 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     error ZeroAmount();
 
     /**
+     * @dev Token address cannot be zero
+     */
+    error InvalidTokenAddress();
+
     /**
      * @dev Minimum deposit not met
      */
@@ -97,8 +100,14 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
 
     /**
      * @dev Construct a new Degen token
+     * @param token_ The ERC20 token to be locked
      */
-    constructor() ERC20(TOKEN_NAME, TOKEN_SYMBOL) Ownable(msg.sender) {}
+    constructor(
+        address token_
+    ) ERC20(TOKEN_NAME, TOKEN_SYMBOL) Ownable(msg.sender) {
+        if (token_ == address(0)) revert InvalidTokenAddress();
+        TOKEN = IERC20(token_);
+    }
 
     /**
      * @dev Deposit tokens to be locked until the end of the locking period
