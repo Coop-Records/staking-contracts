@@ -7,7 +7,9 @@ import "../contracts/DegenLockToken.sol";
 contract DeployDegenLock is Script {
     function run() public {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
-        address degenToken = 0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
+        // DEGEN token address: 0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed
+        // IJN (base mainnet): 0x2Da1F02de055Cebe51c6f6526ed67Ad0dc86f431
+        address degenToken = 0x2Da1F02de055Cebe51c6f6526ed67Ad0dc86f431;
 
         vm.startBroadcast(deployerPrivateKey);
 
