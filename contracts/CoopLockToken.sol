@@ -6,19 +6,47 @@ import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
-/**
- * @notice Lock Degen for a set amount of time.
- * @custom:security-contact jacek@degen.tips
- */
-contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
+/*
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNXK0OkkkkkkO0KXWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNOdl:'...        ...':lx0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0d:.                        .:d0NMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMWKd;.                              .;dKWMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMW0l.                                    .l0WMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMNKOkkxkO0KOl.                                        .lKWMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMW0l'.       ..                                            'xNMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMO'   .',,,.                                                .lXMMMMMMMMMMMMMMMMMM
+MMMMMMMMMWo   ,0NWWK:                                                  cXMMMMMMMMMMMMMMMMM
+MMMMMMMMMMk.  .xWMNo                      .',,,,'.                      oNMMMMMMMMMMMMMMMM
+MMMMMMMMMMNo.  .oXx.                  .,oOKNWWWWNKOo,                   .kWMMMMMMMMMMMMMMM
+MMMMMMMMMMMNx.   '.                  ,kNMMMMMMMMMMMMNk,                  :XMMMMMMMMMMMMMMM
+MMMMMMMMMMMMW0:.                    cXMMMMMMMMMMMMMMMMK:                 .kMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMNk;                  ,0MMMMMMXkddkNMMMMMM0'                 dWMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMNk;                cNMMMMMNo   .oWMMMMMX:                 oWMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMNO:.             ;XMMMMMW0c;;l0WMMMMMK,                 oWMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMW0l'           .dWMMMMMMMWWMMMMMMMNo.                .kMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMNO0WMMXx:.         .oXMMMMMMMMMMMMMMXl.                 ,KMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMWd';xXWMWKd;.        'o0NMMMMMMMWNOo'                  .dWMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMX:  .lONMMW0o,.       .':looool:'.                    .OWMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMM0;    ,o0NMMN0d;.                                     'dNMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMM0;     .,o0NMMWKxc.                               ..   :0WMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMXl.      .,lONWMWXOo;.                         .lK0;   'OWMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMNk,         'cxKWMMWKkl:;.                   ,kWMMXl   ,0MMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMXd'          .,lkXWMMMWKko;..            .oXMMMMM0,  .dWMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMXx;.           .;ok0XWMMWX0xl;..       .,;cclcc,   .kMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMWKd;.            ..;lx0NWMMWX0koc;'..          .;kWMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXko:,..           .'cxKWMMMMMWNK0OxdolllodkKWMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNX0kxolllccllooxk0NWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+*/
+contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
     mapping(address account => uint256) public depositTimestamps;
-
-    /**
-     * @dev Name of the token representing the claim on the locked token
-     */
-    string public constant TOKEN_NAME = "Locked Degen";
 
     /**
      * @dev Symbol of the token representing the claim on the locked token
@@ -99,12 +127,14 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     );
 
     /**
-     * @dev Construct a new Degen token
+     * @dev Construct a new lock token
      * @param token_ The ERC20 token to be locked
+     * @param name_ The name of the lock token
      */
     constructor(
-        address token_
-    ) ERC20(TOKEN_NAME, TOKEN_SYMBOL) Ownable(msg.sender) {
+        address token_,
+        string memory name_
+    ) ERC20(name_, TOKEN_SYMBOL) Ownable(msg.sender) {
         if (token_ == address(0)) revert InvalidTokenAddress();
         TOKEN = IERC20(token_);
     }
@@ -112,7 +142,7 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     /**
      * @dev Deposit tokens to be locked until the end of the locking period
      *
-     * Note: A new deposit resets the lock duration for all DEGEN tokens to start
+     * Note: A new deposit resets the lock duration for all COOP tokens to start
      * from the latest deposit timestamp. Even if some tokens were previously
      * unlocked, a new deposit will lock all tokens for the full lockDuration.
      *
@@ -166,8 +196,8 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
      *
      * Note: If minDepositAmount is increased, users with deposits greater than or
      * equal to the old minDepositAmount but less than the new minDepositAmount
-     * will have a locked DEGEN balance smaller than the new minDepositAmount.
-     * This does not affect their ability to withdraw their locked DEGEN.
+     * will have a locked COOP token balance smaller than the new minDepositAmount.
+     * This does not affect their ability to withdraw their locked COOP.
      *
      * @param newMinDepositAmount The new minimum deposit amount
      */
