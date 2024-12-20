@@ -129,7 +129,7 @@ contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
     /**
      * @dev Construct a new lock token
      * @param token_ The ERC20 token to be locked
-     * @param name_ The name of the lock token (defaults to "Locked Degen" if empty)
+     * @param name_ The name of the lock token
      */
     constructor(
         address token_,
@@ -142,7 +142,7 @@ contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
     /**
      * @dev Deposit tokens to be locked until the end of the locking period
      *
-     * Note: A new deposit resets the lock duration for all tokens to start
+     * Note: A new deposit resets the lock duration for all COOP tokens to start
      * from the latest deposit timestamp. Even if some tokens were previously
      * unlocked, a new deposit will lock all tokens for the full lockDuration.
      *
@@ -196,8 +196,8 @@ contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
      *
      * Note: If minDepositAmount is increased, users with deposits greater than or
      * equal to the old minDepositAmount but less than the new minDepositAmount
-     * will have a locked token balance smaller than the new minDepositAmount.
-     * This does not affect their ability to withdraw their locked tokens.
+     * will have a locked COOP token balance smaller than the new minDepositAmount.
+     * This does not affect their ability to withdraw their locked COOP.
      *
      * @param newMinDepositAmount The new minimum deposit amount
      */
