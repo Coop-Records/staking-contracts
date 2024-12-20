@@ -1,28 +1,43 @@
-# $DEGEN Smart Contracts
+# CoopLockToken Smart Contract
 
-This repository holds the code for $DEGEN smart contracts, including the token and Airdrop 1 contracts.
+This repository contains the CoopLockToken smart contract, which enables token locking functionality with configurable parameters.
+
+## Key Features
+
+- **Token Locking**: Lock any ERC20 token for a specified duration
+- **Configurable Parameters**:
+  - Dynamic lock duration (90 days by default)
+  - Adjustable minimum deposit amount
+  - Customizable token name and symbol
+- **Non-transferrable**: Locked tokens cannot be transferred between accounts
+- **Owner Controls**:
+  - Ability to reduce lock duration
+  - Ability to update minimum deposit amount
+- **Security Features**:
+  - Reentrancy protection
+  - Ownership controls
+  - SafeERC20 implementation
 
 ## Test
 
 ```shell
-npm run test
-npm run test:report-gas
-```
+# Run tests
+pnpm test
 
-Running tests in VS Code: https://hardhat.org/hardhat-runner/docs/advanced/vscode-tests
+# Run tests with gas reporting
+pnpm test:gas
+```
 
 ## Deploy
 
-### Using Foundry
-
-Deploy the contract:
+Deploy the contract using Foundry:
 
 ```shell
 # Deploy to Base Sepolia
-forge script script/DeployCoopLock.s.sol --rpc-url https://sepolia.base.org --broadcast --verify -vvvv
+pnpm deploy:base-sepolia
 
-# Deploy to Base Mainnet (replace with your RPC URL)
-forge script script/DeployCoopLock.s.sol --rpc-url https://mainnet.base.org --broadcast --verify -vvvv
+# Deploy to Base Mainnet
+pnpm deploy:base
 ```
 
 Required environment variables:
@@ -30,49 +45,40 @@ Required environment variables:
 - `PRIVATE_KEY`: Your deployer wallet's private key
 - `ETHERSCAN_API_KEY`: Your Etherscan API key for contract verification
 
-### Using Hardhat
-
-Deploy to a local Hardhat node.
-
-```shell
-npm run compile
-npm run node
-npm run deploy:local
-```
-
 ## Deployments
 
 ### Base Mainnet
 
 Latest Deployment:
 
-- **Contract**: DegenLockToken (IJN Lock)
-- **Address**: `0x64c4dba436d6f8993371f5fd915314bc268debb5`
-- **Transaction**: `0x57fe41fcdf1f3be18729f9ac8b14b9c2ee9afdfb0d6c0cc5290e4b934efa5979`
-- **Block**: 23885200 (0x16ca190)
+- **Contract**: CoopLockToken (IJN Lock)
+- **Address**: `0x844896b77b2f739ef3e4318b6d1cc7c1195d165e`
+- **Transaction**: `0x96e5e066e988c425a01494f6c5160965079632c755e10c73d8ff57f35b32232c`
+- **Block**: 23885129 (0x16da549)
 - **Deployer**: `0x9f8416544f8d16b3999033bd499d655d64a0066c`
 - **Network**: Base Mainnet (Chain ID: 8453)
-- **Explorer**: [View on BaseScan](https://basescan.org/address/0x64c4dba436d6f8993371f5fd915314bc268debb5)
-- **Gas Used**: 841,494 (0xcd916)
-- **Effective Gas Price**: 0.005925242 gwei (0x5a767a)
-- **Constructor Args**: [`0x2Da1F02de055Cebe51c6f6526ed67Ad0dc86f431`]
+- **Explorer**: [View on BaseScan](https://basescan.org/address/0x844896b77b2f739ef3e4318b6d1cc7c1195d165e)
+- **Gas Used**: 823,674 (0xc957a)
+- **Effective Gas Price**: 0.00137147 gwei (0x217bdb)
+- **Constructor Args**:
+  - Token: `0x2Da1F02de055Cebe51c6f6526ed67Ad0dc86f431`
+  - Name: "Locked IJN"
+  - Symbol: "LIJN"
 
 ### Base Sepolia Testnet
 
 Latest Deployment:
 
-- **Contract**: DegenLockToken
-- **Address**: `0xdb047d326c84b07b4fe9afef8d058dbcc3ea1296`
-- **Transaction**: `0xcbb369f0e03c4bbe12e13ee542a7c9b586cc3b8f1c3ed3a91091d3d6d7a0b445`
-- **Block**: 19406560 (0x1281ee0)
-- **Deployer**: `0x35ce1fb8caa3758190ac65edbcbc9647b8800e8f`
+- **Contract**: CoopLockToken
+- **Address**: `0x844896b77b2f739ef3e4318b6d1cc7c1195d165e`
+- **Transaction**: `0x2a143d52e466324980aacd5c6a9b0320bf10d3b56c078e28e959ca81c3a52924`
+- **Block**: 19398624 (0x12923e0)
+- **Deployer**: `0x9f8416544f8d16b3999033bd499d655d64a0066c`
 - **Network**: Base Sepolia (Chain ID: 84532)
-- **Explorer**: [View on BaseScan](https://sepolia.basescan.org/address/0xdb047d326c84b07b4fe9afef8d058dbcc3ea1296)
-- **Gas Used**: 841,494 (0xcd916)
-- **Effective Gas Price**: 0.000100327 gwei (0x187e7)
-- **Constructor Args**: [`0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed`]
-
-Previous Deployments:
-
-1. `0xe6c6a8fa73dff0c4ca3ce8d546ebb2795f8051a9` (Block: 19406063)
-2. `0x87b9beb8b62748785dc2352e622d8ed67d37be7d` (Block: 19405164)
+- **Explorer**: [View on BaseScan](https://sepolia.basescan.org/address/0x844896b77b2f739ef3e4318b6d1cc7c1195d165e)
+- **Gas Used**: 823,674 (0xc957a)
+- **Effective Gas Price**: 0.0000999 gwei (0x187fa)
+- **Constructor Args**:
+  - Token: `0x2Da1F02de055Cebe51c6f6526ed67Ad0dc86f431`
+  - Name: "Locked IJN"
+  - Symbol: "LIJN"
