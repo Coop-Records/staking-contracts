@@ -13,7 +13,7 @@ contract DeployDegenLock is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        CoopLockToken lockToken = new CoopLockToken(degenToken);
+        CoopLockToken lockToken = new CoopLockToken(degenToken, "Locked IJN");
 
         vm.stopBroadcast();
 

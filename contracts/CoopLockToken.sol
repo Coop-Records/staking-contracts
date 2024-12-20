@@ -16,11 +16,6 @@ contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
     mapping(address account => uint256) public depositTimestamps;
 
     /**
-     * @dev Name of the token representing the claim on the locked token
-     */
-    string public constant TOKEN_NAME = "Locked Degen";
-
-    /**
      * @dev Symbol of the token representing the claim on the locked token
      */
     string public constant TOKEN_SYMBOL = "LDEGEN";
@@ -101,10 +96,12 @@ contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
     /**
      * @dev Construct a new lock token
      * @param token_ The ERC20 token to be locked
+     * @param name_ The name of the lock token (defaults to "Locked Degen" if empty)
      */
     constructor(
-        address token_
-    ) ERC20(TOKEN_NAME, TOKEN_SYMBOL) Ownable(msg.sender) {
+        address token_,
+        string memory name_
+    ) ERC20(name_, TOKEN_SYMBOL) Ownable(msg.sender) {
         if (token_ == address(0)) revert InvalidTokenAddress();
         TOKEN = IERC20(token_);
     }
