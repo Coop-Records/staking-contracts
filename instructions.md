@@ -5,10 +5,11 @@
 ## notes
 
 - use test driven development.
+- think step by step.
 
 ## steps:
 
-1. refactory DegenLockToken.sol to CoopLockToken.sol
+1. refactor DegenLockToken.sol to CoopLockToken.sol
 2. update any failing unit tests with the new file name.
 3. Name - unit test - verify name is dynamically set in the constructor. change the contract name once again to reflect the branding of "COOP" or "IJN" in the unit test.
 4. Name - CoopLockToken.sol - update the constructor to allow a name to be passed in.

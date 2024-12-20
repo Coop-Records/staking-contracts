@@ -7,10 +7,10 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {ReentrancyGuard} from "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 
 /**
- * @notice Lock Degen for a set amount of time.
+ * @notice Lock tokens for a set amount of time.
  * @custom:security-contact jacek@degen.tips
  */
-contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
+contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
     using SafeERC20 for IERC20;
 
     mapping(address account => uint256) public depositTimestamps;
@@ -99,7 +99,7 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     );
 
     /**
-     * @dev Construct a new Degen token
+     * @dev Construct a new lock token
      * @param token_ The ERC20 token to be locked
      */
     constructor(
@@ -112,7 +112,7 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
     /**
      * @dev Deposit tokens to be locked until the end of the locking period
      *
-     * Note: A new deposit resets the lock duration for all DEGEN tokens to start
+     * Note: A new deposit resets the lock duration for all tokens to start
      * from the latest deposit timestamp. Even if some tokens were previously
      * unlocked, a new deposit will lock all tokens for the full lockDuration.
      *
@@ -166,8 +166,8 @@ contract DegenLockToken is ERC20, Ownable, ReentrancyGuard {
      *
      * Note: If minDepositAmount is increased, users with deposits greater than or
      * equal to the old minDepositAmount but less than the new minDepositAmount
-     * will have a locked DEGEN balance smaller than the new minDepositAmount.
-     * This does not affect their ability to withdraw their locked DEGEN.
+     * will have a locked token balance smaller than the new minDepositAmount.
+     * This does not affect their ability to withdraw their locked tokens.
      *
      * @param newMinDepositAmount The new minimum deposit amount
      */
