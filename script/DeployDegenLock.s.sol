@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Script.sol";
-import "../contracts/DegenLockToken.sol";
+import "../contracts/CoopLockToken.sol";
 
 contract DeployDegenLock is Script {
     function run() public {
@@ -13,11 +13,11 @@ contract DeployDegenLock is Script {
 
         vm.startBroadcast(deployerPrivateKey);
 
-        DegenLockToken degenLock = new DegenLockToken(degenToken);
+        CoopLockToken lockToken = new CoopLockToken(degenToken);
 
         vm.stopBroadcast();
 
-        console.log("DegenLockToken deployed to:", address(degenLock));
-        console.log("Locked token:", address(degenLock.TOKEN()));
+        console.log("CoopLockToken deployed to:", address(lockToken));
+        console.log("Locked token:", address(lockToken.TOKEN()));
     }
 }
