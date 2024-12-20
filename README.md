@@ -19,10 +19,10 @@ Deploy the contract:
 
 ```shell
 # Deploy to Base Sepolia
-forge script script/DeployDegenLock.s.sol --rpc-url https://sepolia.base.org --broadcast --verify -vvvv
+forge script script/DeployCoopLock.s.sol --rpc-url https://sepolia.base.org --broadcast --verify -vvvv
 
 # Deploy to Base Mainnet (replace with your RPC URL)
-forge script script/DeployDegenLock.s.sol --rpc-url https://mainnet.base.org --broadcast --verify -vvvv
+forge script script/DeployCoopLock.s.sol --rpc-url https://mainnet.base.org --broadcast --verify -vvvv
 ```
 
 Required environment variables:

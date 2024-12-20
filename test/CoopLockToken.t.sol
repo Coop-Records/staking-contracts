@@ -7,8 +7,7 @@ import "../contracts/CoopLockToken.sol";
 contract CoopLockTokenTest is Test {
     CoopLockToken public lockToken;
     address public user = address(0x1);
-    address public constant DEGEN_TOKEN =
-        0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
+    address public constant DEGEN_TOKEN = 0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
     address public constant TEST_TOKEN = address(0x2);
 
     string public constant DEFAULT_NAME = "Locked Degen";
@@ -32,10 +31,7 @@ contract CoopLockTokenTest is Test {
     }
 
     function test_CustomTokenAddress() public {
-        CoopLockToken customLockToken = new CoopLockToken(
-            TEST_TOKEN,
-            DEFAULT_NAME
-        );
+        CoopLockToken customLockToken = new CoopLockToken(TEST_TOKEN, DEFAULT_NAME);
         assertEq(address(customLockToken.TOKEN()), TEST_TOKEN);
     }
 
