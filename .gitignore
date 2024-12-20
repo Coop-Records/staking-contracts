@@ -8,23 +8,11 @@
 node_modules
 .env
 
-# Hardhat files
-/cache
-/artifacts
-
-# TypeChain files
-/typechain
-/typechain-types
-
-# solidity-coverage files
-/coverage
-/coverage.json
-
 # Foundry files
 /out
 /broadcast/*
-!/broadcast/DeployDegenLock.s.sol/
-/broadcast/DeployDegenLock.s.sol/*
-!/broadcast/DeployDegenLock.s.sol/84532/
-/broadcast/DeployDegenLock.s.sol/84532/*
-!/broadcast/DeployDegenLock.s.sol/84532/run-latest.json
+!/broadcast/DeployCoopLock.s.sol/
+/broadcast/DeployCoopLock.s.sol/*
+!/broadcast/DeployCoopLock.s.sol/84532/
+/broadcast/DeployCoopLock.s.sol/84532/*
+!/broadcast/DeployCoopLock.s.sol/84532/run-latest.json

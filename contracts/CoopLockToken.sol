@@ -49,11 +49,6 @@ contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
     mapping(address account => uint256) public depositTimestamps;
 
     /**
-     * @dev Symbol of the token representing the claim on the locked token
-     */
-    string public constant TOKEN_SYMBOL = "LDEGEN";
-
-    /**
      * @dev The ERC20 token to be locked
      */
     IERC20 public immutable TOKEN;

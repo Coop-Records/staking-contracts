@@ -11,9 +11,9 @@ contract CoopLockTokenTest is Test {
         0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
     address public constant TEST_TOKEN = address(0x2);
 
-    string public constant DEFAULT_NAME = "Locked Degen";
+    string public constant DEFAULT_NAME = "Locked Coop";
     string public constant IJN_NAME = "Locked IJN";
-    string public constant DEFAULT_SYMBOL = "LDEGEN";
+    string public constant DEFAULT_SYMBOL = "LCOOP";
     string public constant IJN_SYMBOL = "LIJN";
 
     function setUp() public {
