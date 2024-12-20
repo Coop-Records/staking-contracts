@@ -7,8 +7,7 @@ import "../contracts/CoopLockToken.sol";
 contract CoopLockTokenTest is Test {
     CoopLockToken public lockToken;
     address public user = address(0x1);
-    address public constant DEGEN_TOKEN =
-        0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
+    address public constant DEGEN_TOKEN = 0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed;
     address public constant TEST_TOKEN = address(0x2);
 
     string public constant DEFAULT_NAME = "Locked Coop";
@@ -17,11 +16,7 @@ contract CoopLockTokenTest is Test {
     string public constant IJN_SYMBOL = "LIJN";
 
     function setUp() public {
-        lockToken = new CoopLockToken(
-            DEGEN_TOKEN,
-            DEFAULT_NAME,
-            DEFAULT_SYMBOL
-        );
+        lockToken = new CoopLockToken(DEGEN_TOKEN, DEFAULT_NAME, DEFAULT_SYMBOL);
     }
 
     function test_InitialState() public {
@@ -33,29 +28,17 @@ contract CoopLockTokenTest is Test {
     }
 
     function test_CustomTokenName() public {
-        CoopLockToken customLockToken = new CoopLockToken(
-            TEST_TOKEN,
-            IJN_NAME,
-            DEFAULT_SYMBOL
-        );
+        CoopLockToken customLockToken = new CoopLockToken(TEST_TOKEN, IJN_NAME, DEFAULT_SYMBOL);
         assertEq(customLockToken.name(), IJN_NAME);
     }
 
     function test_CustomTokenSymbol() public {
-        CoopLockToken customLockToken = new CoopLockToken(
-            TEST_TOKEN,
-            IJN_NAME,
-            IJN_SYMBOL
-        );
+        CoopLockToken customLockToken = new CoopLockToken(TEST_TOKEN, IJN_NAME, IJN_SYMBOL);
         assertEq(customLockToken.symbol(), IJN_SYMBOL);
     }
 
     function test_CustomTokenAddress() public {
-        CoopLockToken customLockToken = new CoopLockToken(
-            TEST_TOKEN,
-            DEFAULT_NAME,
-            DEFAULT_SYMBOL
-        );
+        CoopLockToken customLockToken = new CoopLockToken(TEST_TOKEN, DEFAULT_NAME, DEFAULT_SYMBOL);
         assertEq(address(customLockToken.TOKEN()), TEST_TOKEN);
     }
 
