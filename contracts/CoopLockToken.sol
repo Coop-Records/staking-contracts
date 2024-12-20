@@ -130,11 +130,13 @@ contract CoopLockToken is ERC20, Ownable, ReentrancyGuard {
      * @dev Construct a new lock token
      * @param token_ The ERC20 token to be locked
      * @param name_ The name of the lock token
+     * @param symbol_ The symbol of the lock token
      */
     constructor(
         address token_,
-        string memory name_
-    ) ERC20(name_, TOKEN_SYMBOL) Ownable(msg.sender) {
+        string memory name_,
+        string memory symbol_
+    ) ERC20(name_, symbol_) Ownable(msg.sender) {
         if (token_ == address(0)) revert InvalidTokenAddress();
         TOKEN = IERC20(token_);
     }
