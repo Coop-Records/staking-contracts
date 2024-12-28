@@ -52,16 +52,16 @@ Required environment variables:
 Latest Deployment:
 
 - **Contract**: CoopLockToken (IJN Lock)
-- **Address**: `0x844896b77b2f739ef3e4318b6d1cc7c1195d165e`
-- **Transaction**: `0x96e5e066e988c425a01494f6c5160965079632c755e10c73d8ff57f35b32232c`
-- **Block**: 23885129 (0x16da549)
-- **Deployer**: `0x9f8416544f8d16b3999033bd499d655d64a0066c`
+- **Address**: `0x0b641675855E3BB3Fc14B5Bc5A8CcA5910c2329c`
+- **Transaction**: `0xaaef792bca9c50540a749fef4459aa04706b825d5b776f44f7d58fe50b34b584`
+- **Block**: 24281449
+- **Deployer**: `0x3c10FAED26a6bb341322d1BAaf2c6ecf5B957D61`
 - **Network**: Base Mainnet (Chain ID: 8453)
-- **Explorer**: [View on BaseScan](https://basescan.org/address/0x844896b77b2f739ef3e4318b6d1cc7c1195d165e)
+- **Explorer**: [View on BaseScan](https://basescan.org/address/0xaaef792bca9c50540a749fef4459aa04706b825d5b776f44f7d58fe50b34b584)
 - **Gas Used**: 823,674 (0xc957a)
 - **Effective Gas Price**: 0.00137147 gwei (0x217bdb)
 - **Constructor Args**:
-  - Token: `0x2Da1F02de055Cebe51c6f6526ed67Ad0dc86f431`
+  - Token: `0x0b641675855E3BB3Fc14B5Bc5A8CcA5910c2329c`
   - Name: "Locked IJN"
   - Symbol: "LIJN"
 
